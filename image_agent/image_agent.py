@@ -56,8 +56,3 @@ class ImageAgent():
         output_vector = self._sess.run(self._network_tensor, feed_dict=feedDict)
 
         return output_vector[0]
-
-# if  __name__=="__main__":
-#     with tf.Session() as sess:
-#         agent = ImageAgent(sess)
-#         agent.load_model()

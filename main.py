@@ -90,8 +90,6 @@ def train(sess,image_agent,continue_train=False):
             except Exception:
                 break
 
-            
-
             # train Actor and  Critic
             branch_to_train = random.choice([0,1,2,3])
             if buffer_dict[branch_to_train].count()>128:
@@ -119,9 +117,9 @@ def train(sess,image_agent,continue_train=False):
                 pickle.dump(buffer_dict, buffer_log)
             #TODO: save model 
 
+
 def train_ddpg(actor,critic,buffer_dict,batch_size,branch):
     batch = buffer_dict[branch].getBatch(batch_size)
-    #states = np.asarray([e[0][] for e in batch])  #shape = (128,514)
     states_image = np.asarray([e[0][0:-2] for e in batch])
     states_speed = np.asarray([e[0][-2:-1] for e in batch])
     actions = np.asarray([e[1] for e in batch])

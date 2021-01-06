@@ -265,7 +265,7 @@ class Env(object):
         else:
             self.nospeed_times=0
 
-        speed = min(1,speed/10.0)
+        speed = min(1,speed/20.0)
         info = self.convert_info(measurements)
         self.reward = self.reward_from_info(info)
         done = self.done_from_info(info)
