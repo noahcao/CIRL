@@ -21,12 +21,12 @@ def train(sess,image_agent,continue_train=False):
     TAU = 0.001 
     INIT_LRA = 0.000001
     INIT_LRC = 0.0001 
-    EPISODE_MAX_STEP = 5000
+    EPISODE_MAX_STEP = 1000
     # DECAY_RATE = 0.5 
     # DECAY_STEP = 3000000
     #TOTAL_EPISODE = 30000
     TOTAL_EPISODE = 20000
-    EXPLORE = 500000
+    EXPLORE = 100000
     CURRENT_STEP=0
     actor = ActorNetwork(sess,BATCH_SIZE,TAU,INIT_LRA)
     critic = CriticNetwork(sess,BATCH_SIZE,TAU,INIT_LRC)
@@ -45,12 +45,16 @@ def train(sess,image_agent,continue_train=False):
    
     epsilon = 1.0
 
-    env = Env("./log","./data",image_agent)
+    vehicle_num = 64
+    town = "Town02"
+    city = "/Game/Maps/{}".format(town)
+    env = Env("./log","./data",image_agent, city=city)
+    reward_log = open("reward_{}_{}.txt".format(town, vehicle_num), 'w')
     #env.reset()
     
     for i in range(TOTAL_EPISODE):
         try:
-            ob = env.reset()
+            ob = env.reset(vehicle_num)
         except Exception:
             continue
         total_reward = 0
@@ -97,6 +101,8 @@ def train(sess,image_agent,continue_train=False):
             CURRENT_STEP+=1
             episode_step+=1
             if (done):
+                reward_log.write("{} {}\n".format(CURRENT_STEP, total_reward))
+                reward_log.flush()
                 break
         
         print("buffer lenth:{},{},{},{},total reward:{},current_step:{},total_step:{}".format(buffer_dict[0].count(),
