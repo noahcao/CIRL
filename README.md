@@ -9,7 +9,7 @@ Different from the original implementation in CIRL paper, we build this codebase
 
 All difference is to align the implementation with IPC and [SPC](https://github.com/ucbdrive/spc) for fair comparison.
 
-To pretrain the model, we provide a collected on CARLA 0.8.4 with full stack of information, such as action trajectories, depth map, RGB observations, segmentations and so on. Downlaod the dataset.
+To pretrain the model, we provide a collected on CARLA 0.8.4 with full stack of information, such as action trajectories, depth map, RGB observations, segmentations and so on. Downlaod the dataset [here](https://drive.google.com/file/d/1gYXt1FMm3XGsit9RgT728_27BQ0J7Slq/view?usp=sharing).
 
 To cite the CIRL paper with [bibtex](https://scholar.googleusercontent.com/scholar.bib?q=info:Ml2g5XIC5eEJ:scholar.google.com/&output=citation&scisdr=CgUKz4z3ENOmnA-CbW8:AAGBfm0AAAAAX_WHdW_guif7ggJAXkszTr-Yl14yx5Mu&scisig=AAGBfm0AAAAAX_WHdeDrBtkJddCPBRlgGfNFWEiz-k8s&scisf=4&ct=citation&cd=-1&hl=zh-CN).
 
